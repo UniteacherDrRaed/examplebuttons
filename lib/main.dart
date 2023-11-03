@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ButtonsPage(),
     );
   }
@@ -23,7 +24,64 @@ class ButtonsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink.shade500,
+        title: const Text("example buttons"),
+        centerTitle: true,
+        elevation: 5,
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
 
+                  onPressed: (){
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(
+                        const SnackBar(duration: Duration(seconds:1 ),
+                        content: Text("mail")));
+                  },
+                highlightColor: Colors.pink.shade100,
+                icon: const Icon(Icons.mail),
+                color: Colors.deepOrange,
+                tooltip: "mail button",
+              ),
+              MaterialButton(
+
+                  onPressed: (){
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(
+                        const SnackBar(
+                          duration: Duration(seconds: 1),
+                        content: Text("MaterialButton")));
+                  },
+                onLongPress: (){
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(
+                      const SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text("MaterialButton")));
+                },
+
+                splashColor:Colors.white,
+                color:Colors.lime,
+                highlightColor: Colors.deepOrange,
+                elevation: 10,
+                minWidth: 140,
+                height: 120,
+
+                textColor: Colors.purpleAccent,
+                child: const Text("This is a MaterialButton",
+                style: TextStyle(fontSize: 17),),
+
+
+                  ),
+
+
+            ],
+          )
+        ],
       ),
 
     );
