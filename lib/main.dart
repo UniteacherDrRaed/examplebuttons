@@ -30,6 +30,7 @@ class ButtonsPage extends StatelessWidget {
         elevation: 5,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,10 +81,82 @@ class ButtonsPage extends StatelessWidget {
 
 
             ],
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              OutlinedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        duration: Duration(seconds: 1),
+                        content: Text("OutlinedButton")));
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shadowColor: Colors.orange,
+                    elevation: 10,
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(
+                          width: 1,
+                          color: Colors.red),
+                    backgroundColor: Colors.red.shade100,
+                    textStyle: const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 21,
+                    )
+                  ),
+
+                  child: const Text("OutlinedButton")
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        duration: Duration(seconds: 1),
+                        content: Text("ElevatedButton")));
+                  },
+
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                      shadowColor: Colors.blue,
+                      elevation: 10,
+                      shape: const StadiumBorder(),
+                    side: const BorderSide(
+                      width: 4,
+                      color: Colors.grey,
+                    ),
+                    backgroundColor: Colors.orange,
+                    textStyle: const TextStyle(
+                      color: Colors.green,
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                    )
+                  ),
+                  child: const Text("ElevatedButton"))
+            ],
+          ),
+          TextButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    duration: Duration(seconds: 1),
+                    content: Text("TextButton")));
+              },
+              style: TextButton.styleFrom(
+                  shape: LinearBorder.top(),
+                  side: const BorderSide(width: 6, color: Colors.brown),
+                  shadowColor:Colors.lightBlue,
+                  elevation: 10,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 24, horizontal: 21),
+                  backgroundColor: Colors.lime,
+                  textStyle: const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 21)),
+              child: const Text("TextButton"))
         ],
       ),
-
     );
   }
 }
